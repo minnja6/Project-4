@@ -14,4 +14,7 @@ class Game{
         const index = Math.floor(Math.random() * this.phrases.length);
         return this.phrases[index];
     }
+    startGame(){
+        
+    }
 };
