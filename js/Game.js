@@ -26,38 +26,39 @@ class Game{
 
         if(this.activePhrase.checkLetter(key.textContent)){
             this.activePhrase.showMatchedLetter(key.textContent);
-            key.setAttribute('class', 'chosen');
+            key.addClass('chosen');
             }else{
                 this.removeLife();
-                key.setAttribute('class', 'wrong');
-                
+                key.addClass('wrong');           
             }
         }
 
-     checkForWin(){
-             
+    // checkForWin(){
+    //         if(){
 
-    }
+    //         } else {
+
+    //         }
+    // }
     removeLife(){
         const live = document.querySelector(`img[src*=live]`);
         this.missed++;
-        if(this.missed !== 5){
-            for(let i = 0; i< this.missed; i++){
-                let img= live[i].firstChild;
-                img.setAttribute('src', 'images/lostHeart.png')}
-            } else {
-                this.gameOver(false);  
-            }
-        }    
-      gameOver(gameWon){
-        $('#overlay').show();
-        if(this.missed === 5){
-            let gameOverMessage = '';
-            $('#overlay').attr('class', 'lose');
-            gameOverMessage = "You've lost, try again!"; 
+        if(this.missed < 5){
+           live.src = "images/lostHeart.png";
         } else {
-            $('#overlay').attr('class', 'win');
-            gameOverMessage = "Congratulations! You have won the game. Play again!"
+            gameOver();
         }
-      }
+    }
+        gameOver(gameWon){
+            $('#overlay').show();
+            if(this.missed === 5){
+                let gameOverMessage = '';
+                $('#overlay').addClass('lose');
+                gameOverMessage = "You've lost, try again!"; 
+            } else {
+                $('#overlay').addClass('win');
+                gameOverMessage = "Congratulations! You have won the game. Play again!"
+            }
+        }
+    
 }

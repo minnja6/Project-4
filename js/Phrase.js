@@ -14,10 +14,19 @@ class Phrase{
             }
         }
     }
-    checkLetter(){
-
+    checkLetter(letter){
+        if(this.phrase.includes(letter)){
+            return true;
+        } else {
+            return false;
+        }
     }
-    showMatchedLetter(){
-
+    showMatchedLetter(letter){
+        let letters = $('#phrase li');
+        letters.forEach(key => {
+            if(key.textContent === letter){
+                key.attr('class', 'show');
+            }
+        });
     }
 }
