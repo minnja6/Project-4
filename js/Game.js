@@ -19,4 +19,20 @@ class Game{
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
     }
-};
+    handleInteraction(){
+
+    }
+    checkForWin(){
+            if(this.activePhrase.filter(letter => letter)){
+
+            }
+            } else {
+
+            }
+    removeLife(){
+
+        }
+    gameOver(gameWon){
+
+        }
+}

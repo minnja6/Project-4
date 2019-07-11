@@ -14,4 +14,10 @@ class Phrase{
             }
         }
     }
+    checkLetter(){
+
+    }
+    showMatchedLetter(){
+
+    }
 }
