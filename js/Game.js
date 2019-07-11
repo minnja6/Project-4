@@ -15,6 +15,8 @@ class Game{
         return this.phrases[index];
     }
     startGame(){
-        
+        $('#overlay').hide();
+        this.activePhrase = this.getRandomPhrase();
+        this.activePhrase.addPhraseToDisplay();
     }
 };
