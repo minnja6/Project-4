@@ -5,4 +5,5 @@ $('#btn__reset').on("click", function(){
 });
 $('.key').on("click", function(e){
     game.handleInteraction(e);
+    
 });

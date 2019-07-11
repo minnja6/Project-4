@@ -19,20 +19,45 @@ class Game{
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
     }
-    handleInteraction(){
+    handleInteraction(key){
+        const keyboard = document.querySelectorAll('.keyrow button.key');
+        //disables the selected letters on the keyboard buttons
+        key.disabled = true;
+
+        if(this.activePhrase.checkLetter(key.textContent)){
+            this.activePhrase.showMatchedLetter(key.textContent);
+            key.setAttribute('class', 'chosen');
+            }else{
+                this.removeLife();
+                key.setAttribute('class', 'wrong');
+                
+            }
+        }
+
+     checkForWin(){
+             
 
     }
-    checkForWin(){
-            if(this.activePhrase.filter(letter => letter)){
-
-            }
-            } else {
-
-            }
     removeLife(){
-
+        const live = document.querySelector(`img[src*=live]`);
+        this.missed++;
+        if(this.missed !== 5){
+            for(let i = 0; i< this.missed; i++){
+                let img= live[i].firstChild;
+                img.setAttribute('src', 'images/lostHeart.png')}
+            } else {
+                this.gameOver(false);  
+            }
+        }    
+      gameOver(gameWon){
+        $('#overlay').show();
+        if(this.missed === 5){
+            let gameOverMessage = '';
+            $('#overlay').attr('class', 'lose');
+            gameOverMessage = "You've lost, try again!"; 
+        } else {
+            $('#overlay').attr('class', 'win');
+            gameOverMessage = "Congratulations! You have won the game. Play again!"
         }
-    gameOver(gameWon){
-
-        }
+      }
 }
