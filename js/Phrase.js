@@ -22,11 +22,12 @@ class Phrase{
         }
     }
     showMatchedLetter(letter){
-        let letters = $('#phrase li');
-        letters.forEach(key => {
-            if(key.textContent === letter){
-                key.attr('class', 'show');
+        console.log(letter);
+        let li = $('#phrase li');
+        for(let i = 0; i < li.length; i++){
+            if(li[i].textContent.toLowerCase() == letter.toLowerCase()){
+                $(li[i]).removeClass('hide').addClass('show');
             }
-        });
+        }
     }
 }
