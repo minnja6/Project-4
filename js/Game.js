@@ -35,7 +35,7 @@ class Game{
         event.target.classList.add('chosen');
         this.checkForWin();
        } else {
-            //console.log('wrong');
+            console.log('wrong');
             event.target.classList.add('wrong');  
             this.removeLife();
     }
@@ -51,24 +51,32 @@ class Game{
     }
         
     checkForWin(){
-             if($('.letter').length === $('.letter'.show).length){
-                $('#overlay').show();
-                $('#game-over-message').text('Congratulations! You have won the game. Play again!');
-                $('#btn__reset').on("click", function(){
-                    //location.reload();
-             });
-             return true
-            }
+            const letter = $('.letter');
+            const show = $('.show');
+        if(letter.length === show.length){
+            return true;
+        } else {
+            return false;
+        }
     }
     gameOver(gameWon){
-            if(this.missed === 5){
-                let gameOverMessage = '';
-                $('#overlay').show();
-                $('#game-over-message').text("You've lost, try again!"); 
-                $('#btn__reset').text('Play Again');
-                $('#btn__reset').on("click", function(){
-                    location.reload();
-             });
-            }
-            }
+        if(this.missed === 5){
+            let gameOverMessage = '';
+            $('#overlay').show();
+            $('#game-over-message').text("You've lost, try again!"); 
+            $('#btn__reset').text('Play Again');
+            }  
+        if(gameWon){
+            $('#overlay').show();
+            $('#game-over-message').text('Congratulations! You have won the game. Play again!');
+        }
+    }
+   resetGame(){
+         this.missed = 0;
+         let disabledButton = document.querySelectorAll('#qwerty button[disabled]');
+        for(let i = 0; i < disabledButton.length; i++){
+            disabledButton[i].disabled = false;
+            disabledButton[i].className = 'key';
+       }
+     }
 }            
