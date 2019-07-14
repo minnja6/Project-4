@@ -25,8 +25,6 @@ class Game{
         this.activePhrase.addPhraseToDisplay();
     }
     handleInteraction(e){
-       const phraseDiv = document.querySelector('#phrase ul');
-       //const e = event.target.textContent;
        e.disabled = true;
 
        if(this.activePhrase.checkLetter(e.target.textContent)){
@@ -45,7 +43,8 @@ class Game{
             this.missed++;
             if(this.missed <= 5){
                live.src = "images/lostHeart.png";
-            } if(this.missed === 5) {
+            }
+            if(this.missed === 5) {
                 this.gameOver(false);
             }
     }
@@ -54,29 +53,34 @@ class Game{
             const letter = $('.letter');
             const show = $('.show');
         if(letter.length === show.length){
-            return true;
+            $('#overlay').addClass('win').show();
+            $('#game-over-message').text('Congratulations! You have won the game.');
+             $('#btn__reset').on('click', () => {
+                this.resetGame();
+            });
+            return true; 
         } else {
             return false;
         }
     }
-    gameOver(gameWon){
+    gameOver(){
         if(this.missed === 5){
-            let gameOverMessage = '';
-            $('#overlay').show();
-            $('#game-over-message').text("You've lost, try again!"); 
+            //let gameOverMessage = '';
+            $('#overlay').addClass('lose').show();
+            $('#game-over-message').text("You've lost!"); 
             $('#btn__reset').text('Play Again');
             }  
-        if(gameWon){
-            $('#overlay').show();
-            $('#game-over-message').text('Congratulations! You have won the game. Play again!');
-        }
+             $('#btn__reset').on('click', () => {
+                this.resetGame();
+             }); 
     }
    resetGame(){
-         this.missed = 0;
-         let disabledButton = document.querySelectorAll('#qwerty button[disabled]');
+        const disabledButton = $('#qwerty button[disabled]');
         for(let i = 0; i < disabledButton.length; i++){
+            this.missed = 0;
             disabledButton[i].disabled = false;
-            disabledButton[i].className = 'key';
+            disabledButton[i].classList.remove('win');
+            disabledButton[i].classList.remove('lose');
        }
      }
 }            
