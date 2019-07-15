@@ -1,8 +1,9 @@
 class Phrase{
     constructor(phrase){
-        this.phrase = phrase.toLowerCase();
+        //makes the phrases lowercase
+        this.phrase = phrase.toLowerCase(); 
     }
-
+    //creating a for loop and if and else statement to add the phrases with spaces to the screen
     addPhraseToDisplay(){
         let list =  $('#phrase ul');
         for (let i = 0; i < this.phrase.length; i++){
@@ -14,6 +15,7 @@ class Phrase{
             }
         }
     }
+    //checking if the letter matches those in the phrases
     checkLetter(letter){
         if(this.phrase.includes(letter)){
             return true;
@@ -21,6 +23,7 @@ class Phrase{
             return false;
         }
     }
+    //showing the letters that match the phrases
     showMatchedLetter(letter){
         console.log(letter);
         let li = $('#phrase li');

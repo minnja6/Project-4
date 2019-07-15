@@ -5,7 +5,7 @@
 
 :root {
   --color-win: #78CF82;
-  --color-lose: #D94545;
+  --color-lose: rgb(8, 1, 1);
   --color-start: #5b85b7;
   --color-neutral: #445069;
   --color-neutral-light: #D2D2D2;
@@ -28,6 +28,7 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background-color: black;
 }
 
 li, ol, ul {
@@ -61,7 +62,7 @@ button {
 }
 
 #btn__reset {
-	width: 200px;
+	width: 400px;
 	margin: 0 auto;
 }
 
@@ -86,7 +87,7 @@ button {
 /* Title */
 
 .header {
-  color: #3a3f58;
+  color: #e60f68;
 }
 
 
@@ -111,7 +112,7 @@ button {
 
 .show {
   color: #fff;
-  background-color: #4ac0d5;
+  background-color: #e60f68;
   font-size: 20px;
   height: 65px;
   width: 65px;
@@ -131,14 +132,14 @@ button {
 }
 
 .chosen {
-  background: #3a3f58;
+  background:#e60f68;
   border-radius: 5px;
   font-size: var(--font-size-medium);
   color: #FFFFFF;
 }
 
 .wrong {
-  background: #f7a964;
+  background: #0c0202;
   color: #FFFFFF;
 }
 
@@ -180,7 +181,7 @@ button {
 }
 
 .start {
-  background-color: #3a3f58;
+  background-color: #d11554;
 }
 
 .start a {
@@ -188,7 +189,7 @@ button {
 }
 
 .win {
-  background-color: var(--color-win);
+  background-color: #e60f68;
 }
 
 .win a {
@@ -196,7 +197,7 @@ button {
 }
 
 .lose {
-  background-color: #f5785f;
+  background-color: #0c0503;
 }
 
 .lose a {
