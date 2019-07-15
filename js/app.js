@@ -7,4 +7,3 @@ $('#btn__reset').on("click", function(){
      game.handleInteraction(e);
      
  });
- 
