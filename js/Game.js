@@ -57,6 +57,7 @@ class Game{
             $('#game-over-message').text('Congratulations! You have won the game.');
             $('#btn__reset').textContent = "Reset";
             this.resetGame();
+            this.resetLife();
         }  
     }
     gameOver(){
@@ -64,15 +65,12 @@ class Game{
             //let gameOverMessage = '';
             $('#overlay').addClass('lose').show();
             $('#game-over-message').text("You've lost!"); 
-            //$('#btn__reset').text('Play Again');
-            $('#btn__reset').textContent = "Reset";
             this.resetGame();
+            this.resetLife();
             }  
             
      }
     resetGame(){
-            const overlay = document.getElementById('overlay');
-            const gameOverMessage = document.getElementById('game-over-message');
             const startButton = document.getElementById('btn__reset');
             const phraseCont = document.getElementById('phrase');
             const keyboard = document.getElementsByClassName('key');
@@ -84,41 +82,11 @@ class Game{
               keyboard[i].className = 'key';
               keyboard[i].removeAttribute('disabled');
             }
-            for (let i = 0; i < heartsLi.length; i++) { //resets scoreboard
-              $('#scoreboard').
-            }
         }
-    //         this.missed = 0;
-    //         for (let i = 0; i < ($('.tries')).length; i++) {
-    //             const live = document.querySelector(`img[src*=live]`);
-    //             live.src = "images/liveHeart.png";
-    //         }
-         
-    //    while ($('#phrase').children.length > 0) {
-    //        $('#phrase').removeChild($('#phrase').children[0]);
-    //    }
-    //    for (let i = 0; i < ($('.keyrow')).length; i++) {
-    //        $('.keyrow')[i].classList.remove('chosen');
-    //        $('.keyrow')[i].disabled = false;
-    //    }    
-    // }
-
-    // resetGame(){
-//         this.missed=0;
-//         let disabledButton= document.querySelectorAll('#qwerty button[disabled]');
-//         for (let i=0; i<disabledButton.length; i++){
-//             disabledButton[i].disabled=false;
-//             disabledButton[i].className='key';
-//         }
-//         document.querySelectorAll('#scoreboard img').forEach(item=>{item.src="images/liveHeart.png"});
-//     }
-//    resetGame(){
-//         const disabledButton = $('#qwerty button[disabled]');
-//         for(let i = 0; i < disabledButton.length; i++){
-//             this.missed = 0;
-//             disabledButton[i].disabled = false;
-//             disabledButton[i].classList.remove('win');
-//             disabledButton[i].classList.remove('lose');
-//        }
-//      }
-}            
+    resetLife(){
+        const hearts = document.querySelectorAll('img');
+        hearts.forEach(heart => {
+            heart.src  = "images/liveHeart.png";
+        })
+    };
+}     

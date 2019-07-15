@@ -4,6 +4,5 @@ $('#btn__reset').on("click", function(){
     game.startGame();
  });
  $('.key').on("click", function(e){
-     game.handleInteraction(e);
-     
+     game.handleInteraction(e);    
  });
