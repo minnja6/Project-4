@@ -1,7 +1,8 @@
 class Game{
     constructor(){
+        this.missed = 0;
         //Phrases for the Game 
-       this.phrases = [
+        this.phrases = [
           new Phrase('Hit the nail on the head'),
           new Phrase('You cant judge a book by its cover'),
           new Phrase('To kill two birds with one stone'),
@@ -17,7 +18,6 @@ class Game{
     }
     //starts the game with 0 misses, adds the random phrases to the display and hides the overlay
     startGame(){
-        this.missed = 0;
         $('#overlay').hide();
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
@@ -52,26 +52,21 @@ class Game{
             const letter = $('.letter');
             const show = $('.show');
         if(letter.length === show.length){
-            $('#overlay').addClass('win').show();
-            $('#game-over-message').text('Congratulations! You have won the game.');
-            $('#btn__reset').textContent = "Reset";
-            this.resetGame();
-            this.resetLife();
-            return true;
-        }  else {
-            return false;
-        }
+            this.gameOver(true);
+        }  
     }
     //if you've lost the game, show the game over message to you've lost, reset the game and hearts
-    gameOver(){
-        if(this.missed === 5){
+    gameOver(gameWon){
+        if(gameWon){
+            $('#overlay').addClass('win').show();
+            $('#game-over-message').text('Congratulations! You have won the game.');
+        } else {
             $('#overlay').addClass('lose').show();
-            $('#game-over-message').text("You've lost!"); 
+            $('#game-over-message').text("You've lost!");
+        }
             this.resetGame();
             this.resetLife();
-            }  
-            
-     }
+    }
     //resets the game back to its original screen  
     resetGame(){
             const resetButton = document.getElementById('btn__reset');
