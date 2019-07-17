@@ -23,14 +23,15 @@ class Game{
         this.activePhrase.addPhraseToDisplay();
     }
     //adding the chosen class to the chosen letters and the wrong class to the wrong letters
-    handleInteraction(e){
+    handleInteraction(){
+       const e = event.target;
        e.disabled = true;
-       if(this.activePhrase.checkLetter(e.target.textContent)){
-        this.activePhrase.showMatchedLetter(e.target.textContent);
-        event.target.classList.add('chosen');
+       if(this.activePhrase.checkLetter(e.textContent)){
+        this.activePhrase.showMatchedLetter(e.textContent);
+        e.classList.add('chosen');
         this.checkForWin();
        } else {
-            event.target.classList.add('wrong');  
+            e.classList.add('wrong');  
             this.removeLife();
     }
     }

@@ -25,7 +25,6 @@ class Phrase{
     }
     //showing the letters that match the phrases
     showMatchedLetter(letter){
-        console.log(letter);
         let li = $('#phrase li');
         for(let i = 0; i < li.length; i++){
             if(li[i].textContent.toLowerCase() == letter.toLowerCase()){
